@@ -1,0 +1,4 @@
+// This is the objects database
+
+id name dimensions position map_id
+1 bulletin 20,10,5 5,1,80 1

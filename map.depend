@@ -1,0 +1,57 @@
+# depslib dependency file v1.0
+1327695603 source:e:\sheur\c++\map\gl_wrapper.c
+	"gl_wrapper.h"
+	<math.h>
+	<stdio.h>
+	"controller.h"
+
+1327610915 e:\sheur\c++\map\gl_wrapper.h
+	"global.h"
+
+1327696497 e:\sheur\c++\map\global.h
+	"GL/freeglut.h"
+
+1066736514 e:\sheur\c++\map\gl\freeglut.h
+	"freeglut_std.h"
+	"freeglut_ext.h"
+
+1307677630 e:\sheur\c++\map\gl\freeglut_std.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1315165112 e:\sheur\c++\map\gl\freeglut_ext.h
+	<stdarg.h>
+
+1327696497 source:e:\sheur\c++\map\main.c
+	"global.h"
+	"gl_wrapper.h"
+	"key.h"
+	"database.h"
+	"controller.h"
+	<stdio.h>
+	<stdlib.h>
+
+1326829109 e:\sheur\c++\map\key.h
+	"global.h"
+	"gl_wrapper.h"
+
+1327696497 source:e:\sheur\c++\map\key.c
+	<stdio.h>
+	"key.h"
+
+1326829855 source:e:\sheur\c++\map\controller.c
+	"controller.h"
+
+1326995412 e:\sheur\c++\map\controller.h
+	"global.h"
+
+1327628802 source:e:\sheur\c++\map\database.c
+	"database.h"
+	"controller.h"
+	<stdio.h>
+
+1326922777 e:\sheur\c++\map\database.h
+	"global.h"
+
