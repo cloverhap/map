@@ -9,44 +9,86 @@ void process_key(unsigned char key, int x, int y)
 #ifdef DEBUG_KEY
     printf("Pressed %c\n", key);
 #endif
-    switch (key) {
-        case 'q':
-        case 27: // esc
-            exit_glut();
-            break;
-        case 'e':
-            // move right
-            translate_eye(speed,0.0,0.0);
-            break;
-        case 'a':
-            // move left
-            translate_eye(-speed,0.0,0.0);
-            break;
-        case ',':
-            // move forward
-            translate_eye(0.0,0.0,-speed);
-            break;
-        case 'o':
-            // move back
-            translate_eye(0.0,0.0,speed);
-            break;
-        case '.':
-            // rotate right
-            rotate_eye(-angular_speed,0);
-            break;
-        case '\'':
-            // rotate left
-            rotate_eye(angular_speed,0);
-            break;
-        case '<':
-            // rotate up
-            rotate_eye(0,angular_speed);
-            break;
-        case 'O':
-            // rotate down
-            rotate_eye(0,-angular_speed);
-            break;
-        default: break;
+    if (kb_layout == KB_QWERTY) {
+        switch (key) {
+            case 27: // esc
+                exit_glut();
+                break;
+            case 'd':
+                // move right
+                translate_eye(speed,0.0,0.0);
+                break;
+            case 'a':
+                // move left
+                translate_eye(-speed,0.0,0.0);
+                break;
+            case 'w':
+                // move forward
+                translate_eye(0.0,0.0,-speed);
+                break;
+            case 's':
+                // move back
+                translate_eye(0.0,0.0,speed);
+                break;
+            case 'e':
+                // rotate right
+                rotate_eye(-angular_speed,0);
+                break;
+            case 'q':
+                // rotate left
+                rotate_eye(angular_speed,0);
+                break;
+            case 'W':
+                // rotate up
+                rotate_eye(0,angular_speed);
+                break;
+            case 'S':
+                // rotate down
+                rotate_eye(0,-angular_speed);
+                break;
+            default: break;
+        }
+    }
+    else if (kb_layout == KB_DVORAK) {
+        switch (key) {
+            case 'q':
+            case 27: // esc
+                exit_glut();
+                break;
+            case 'e':
+                // move right
+                translate_eye(speed,0.0,0.0);
+                break;
+            case 'a':
+                // move left
+                translate_eye(-speed,0.0,0.0);
+                break;
+            case ',':
+                // move forward
+                translate_eye(0.0,0.0,-speed);
+                break;
+            case 'o':
+                // move back
+                translate_eye(0.0,0.0,speed);
+                break;
+            case '.':
+                // rotate right
+                rotate_eye(-angular_speed,0);
+                break;
+            case '\'':
+                // rotate left
+                rotate_eye(angular_speed,0);
+                break;
+            case '<':
+                // rotate up
+                rotate_eye(0,angular_speed);
+                break;
+            case 'O':
+                // rotate down
+                rotate_eye(0,-angular_speed);
+                break;
+            default: break;
+        }
     }
 
     glutPostRedisplay();
@@ -81,6 +123,9 @@ void process_special_key(int key, int x, int y)
             // TODO: set each Fn key to diff configurations of shapes/positions
             init();
             break;
+        case GLUT_KEY_F12:
+            if (kb_layout == KB_QWERTY) kb_layout = KB_DVORAK;
+            else kb_layout = KB_QWERTY;
         default: break;
     }
 

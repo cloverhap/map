@@ -141,6 +141,8 @@ void init()
 
     speed = 0.2;
     angular_speed = -(1.0/24.0)*PI;
+
+    kb_layout = KB_QWERTY;
 }
 
 /***

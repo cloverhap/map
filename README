@@ -1,1 +1,14 @@
 Compiled for 32-bit with MinGW. A Code::Blocks project.
+
+Playing around with FreeGLUT to create a simple game engine, used C.
+
+
+Keys:
+W,A,S,D - move
+shift+W,shift+S - turn up/down
+Q,E - turn left/right
+ESC - Quit
+F12 - Change keyboard layout recognition between QWERTY and DVORAK
+
+2012/07/27
+-I used dvorak keyboard layout, so for easier testing I included a function key to change between the layouts, to get WASD working at the right part of the keyboard

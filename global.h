@@ -28,6 +28,10 @@
 #define UP 2
 #define DOWN 3
 
+// enum for keyboard layout
+#define KB_QWERTY 0
+#define KB_DVORAK 1
+
 #include "GL/freeglut.h"
 
 // forward declarations
@@ -58,6 +62,7 @@ GLdouble angular_speed;   // rotating speed
 player * chars[MAX_CHARS];  // list of characters (logic will need to be changed eventually to allow dynamic char creation)
 area * areas[MAX_AREAS];  // same as above
 object * objects[MAX_OBJECTS]; // ditto
+GLint kb_layout;  // Keyboard layout
 
 // global functions
 GLint GLmax(GLint, GLint);
