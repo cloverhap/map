@@ -140,18 +140,20 @@ void translate_eye(GLdouble x, GLdouble y, GLdouble z) {
     GLdouble z_move = x*x_axis[2] + y*y_axis[2] + z*z_axis[2];
 
     // note the movements of the view
-    eye_pos[0] += x_move;
-    eye_pos[1] += y_move;
-    eye_pos[2] += z_move;
-    chars[0]->position[0] = eye_pos[0];
-    chars[0]->position[1] = eye_pos[1];
-    chars[0]->position[2] = eye_pos[2];
-    center_pos[0] += x_move;
-    center_pos[1] += y_move;
-    center_pos[2] += z_move;
-    up_pos[0] = y_axis[0];
-    up_pos[1] = y_axis[1];
-    up_pos[2] = y_axis[2];
+    if (x || y || z) {
+        eye_pos[0] += x_move;
+        eye_pos[1] += y_move;
+        eye_pos[2] += z_move;
+        chars[0]->position[0] = eye_pos[0];
+        chars[0]->position[1] = eye_pos[1];
+        chars[0]->position[2] = eye_pos[2];
+        center_pos[0] += x_move;
+        center_pos[1] += y_move;
+        center_pos[2] += z_move;
+        up_pos[0] = y_axis[0];
+        up_pos[1] = y_axis[1];
+        up_pos[2] = y_axis[2];
+    }
 
 #ifdef DEBUG_VALUE
     printf("Translation vector: [%f %f %f]\n", x, y, z);
@@ -194,19 +196,19 @@ void rotate_eye(GLdouble h, GLdouble v) {
     // Calculate the new center point relative to the eye
     GLdouble movement[3] = {0,0,0};
     // 1. Apply horizontal rotation:
-    //    Relative direction vector is (sin(h)*x_axis, 0, -cos(h)*z_axis)
+    //    Relative direction vector is (-sin(h)*x_axis, 0, -cos(h)*z_axis)
     if (h) {
-        movement[0] = sin(h)*x_axis[0] - cos(h)*z_axis[0];
-        movement[1] = sin(h)*x_axis[1] - cos(h)*z_axis[1];
-        movement[2] = sin(h)*x_axis[2] - cos(h)*z_axis[2];
+        movement[0] = -sin(h)*x_axis[0] - cos(h)*z_axis[0];
+        movement[1] = -sin(h)*x_axis[1] - cos(h)*z_axis[1];
+        movement[2] = -sin(h)*x_axis[2] - cos(h)*z_axis[2];
         //printf("Movement after horizontal rotation: [%lf %lf %lf]\n",movement[0],movement[1],movement[2]);
     }
     // 2. Apply vertical rotation:
-    //    Relative direction vector is (0, -sin(v)*y_axis, -cos(v)*z_axis)
+    //    Relative direction vector is (0, sin(v)*y_axis, -cos(v)*z_axis)
     if (v) {
-        movement[0] = -sin(v)*y_axis[0] - cos(v)*z_axis[0];
-        movement[1] = -sin(v)*y_axis[1] - cos(v)*z_axis[1];
-        movement[2] = -sin(v)*y_axis[2] - cos(v)*z_axis[2];
+        movement[0] = sin(v)*y_axis[0] - cos(v)*z_axis[0];
+        movement[1] = sin(v)*y_axis[1] - cos(v)*z_axis[1];
+        movement[2] = sin(v)*y_axis[2] - cos(v)*z_axis[2];
         //printf("After vertical: [%lf %lf %lf]\n",movement[0],movement[1],movement[2]);
     }
     // 3. Normalize the result and scale it to previous eye to center distance
@@ -222,9 +224,11 @@ void rotate_eye(GLdouble h, GLdouble v) {
     // These steps lead to an approximate rotation
 
     // Note the movement of the view
-    center_pos[0] = eye_pos[0] + movement[0];
-    center_pos[1] = eye_pos[1] + movement[1];
-    center_pos[2] = eye_pos[2] + movement[2];
+    if (h || v) { // as long as there is movement
+        center_pos[0] = eye_pos[0] + movement[0];
+        center_pos[1] = eye_pos[1] + movement[1];
+        center_pos[2] = eye_pos[2] + movement[2];
+    }
     // Note the movement of up
     if (v) {
         up_pos[0] = cos(v)*y_axis[0] + sin(v)*z_axis[0];

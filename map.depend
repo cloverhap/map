@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1327701772 source:e:\sheur\c++\map\gl_wrapper.c
+1327790323 source:e:\sheur\c++\map\gl_wrapper.c
 	"gl_wrapper.h"
 	<math.h>
 	<stdio.h>
@@ -24,7 +24,7 @@
 1315165112 e:\sheur\c++\map\gl\freeglut_ext.h
 	<stdarg.h>
 
-1327708641 source:e:\sheur\c++\map\main.c
+1327789782 source:e:\sheur\c++\map\main.c
 	"global.h"
 	"gl_wrapper.h"
 	"key.h"
@@ -37,7 +37,7 @@
 	"global.h"
 	"gl_wrapper.h"
 
-1327696497 source:e:\sheur\c++\map\key.c
+1327790201 source:e:\sheur\c++\map\key.c
 	<stdio.h>
 	"key.h"
 

@@ -139,8 +139,8 @@ void init()
               up_pos[0],up_pos[1],up_pos[2]);
     glPopAttrib();
 
-    speed = 0.2;
-    angular_speed = -(1.0/24.0)*PI;
+    speed = 0.5;
+    angular_speed = (1.0/12.0)*PI;
 
     kb_layout = KB_QWERTY;
 }

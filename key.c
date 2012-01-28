@@ -87,6 +87,20 @@ void process_key(unsigned char key, int x, int y)
                 // rotate down
                 rotate_eye(0,-angular_speed);
                 break;
+            case '+':
+                // speed up
+                speed += .25;
+                angular_speed += PI/12.0;
+                break;
+            case '-':
+                // slow down
+                speed -= .1;
+                angular_speed -= PI/24.0;
+                if (speed < 0 || angular_speed < 0) {
+                    speed = 0;
+                    angular_speed = 0;
+                }
+                break;
             default: break;
         }
     }
@@ -126,6 +140,7 @@ void process_special_key(int key, int x, int y)
         case GLUT_KEY_F12:
             if (kb_layout == KB_QWERTY) kb_layout = KB_DVORAK;
             else kb_layout = KB_QWERTY;
+            break;
         default: break;
     }
 
