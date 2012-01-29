@@ -12,7 +12,7 @@ void process_key(unsigned char key, int x, int y)
     if (kb_layout == KB_QWERTY) {
         switch (key) {
             case 27: // esc
-                exit_glut();
+                exit_glut("User quit the game.");
                 break;
             case 'd':
                 // move right
@@ -53,7 +53,7 @@ void process_key(unsigned char key, int x, int y)
         switch (key) {
             case 'q':
             case 27: // esc
-                exit_glut();
+                exit_glut("User quit the game.");
                 break;
             case 'e':
                 // move right
@@ -127,11 +127,11 @@ void process_special_key(int key, int x, int y)
             break;
         case GLUT_KEY_UP:
             // move up
-            translate_eye(0.0,-speed,0.0);
+            translate_eye(0.0,0.0,-speed);
             break;
         case GLUT_KEY_DOWN:
             // move down
-            translate_eye(0.0,speed,0.0);
+            translate_eye(0.0,0.0,speed);
             break;
         case GLUT_KEY_F2:
             // TODO: set each Fn key to diff configurations of shapes/positions

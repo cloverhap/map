@@ -16,7 +16,6 @@ extern GLdouble up_pos[3];
  **/
 
 /* Utility Functions */
-
 /***
  * dot_product
  * @pre arrays of size 3

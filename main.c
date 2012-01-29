@@ -5,6 +5,7 @@
 #include "controller.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 /***
  * Draw and Render
@@ -89,8 +90,19 @@ static void resize_scene(int w, int h)
 /***
  * Idle Function callback
  ****/
+static void check_goal() {
+    if (pow(pow(chars[0]->position[0] - objects[0]->position[0],2) +
+            pow(chars[0]->position[1] - objects[0]->position[1],2) +
+            pow(chars[0]->position[2] - objects[0]->position[2],2),
+            1.0/2.0)
+          < 1) {
+        exit_glut("You have reached the goal!");
+    }
+}
+
 static void idle_event()
 {
+    check_goal();
     glutPostRedisplay();
 }
 
@@ -150,7 +162,8 @@ void init()
  * Takes care of cleanup and other exiting procedures as necessary
  * and exits the main loop
  ****/
-void exit_glut() {
+void exit_glut(const char* s) {
+    printf("%s\n",s);
     glutLeaveMainLoop();
 }
 
@@ -182,6 +195,7 @@ int main(int argc, char *argv[])
     glutMainLoop();
     glutDestroyWindow(window_id);
 
-    system("PAUSE");
+    //system("PAUSE");
+    getchar();
     return 0;
 }

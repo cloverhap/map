@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1327790323 source:e:\sheur\c++\map\gl_wrapper.c
+1327791123 source:e:\sheur\c++\map\gl_wrapper.c
 	"gl_wrapper.h"
 	<math.h>
 	<stdio.h>
@@ -37,7 +37,7 @@
 	"global.h"
 	"gl_wrapper.h"
 
-1327790201 source:e:\sheur\c++\map\key.c
+1327791555 source:e:\sheur\c++\map\key.c
 	<stdio.h>
 	"key.h"
 
